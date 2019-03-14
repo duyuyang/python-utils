@@ -21,18 +21,28 @@ class Solution(object):
   #         break
   #   return result
 
-  def twoSum(self, nums, target):
-    # if target - num = a num:
-    #    append to []
-    col = []
-    for i, n in enumerate(nums):
-      gap = target - n
+  # def twoSum(self, nums, target):
+  #   # if target - num = a num:
+  #   #    append to []
+  #   col = []
+  #   for i, n in enumerate(nums):
+  #     gap = target - n
 
-      if gap in nums[:i] or gap in nums[i+1:]:
-        col.append(i)
-    return col
+  #     if gap in nums[:i] or gap in nums[i+1:]:
+  #       col.append(i)
+  #   return col
+
+  def twoSum(self, nums, target):
+    dicts = {}
+    for i in range(0, len(nums)):
+        x = nums[i]
+        if x in dicts:
+            return [dicts.get(x), i]
+        dicts[target - x] = i
+
 
 if __name__ == '__main__':
   S = Solution()
   print(S.twoSum([2, 7, 11, 5], 9))
   print(S.twoSum([3, 3], 6))
+  print(S.twoSum([2, 7, 11, 5, 4, 6, 3, 6], 9))

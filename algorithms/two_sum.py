@@ -32,17 +32,25 @@ class Solution(object):
   #       col.append(i)
   #   return col
 
-  def twoSum(self, nums, target):
-    dicts = {}
-    for i in range(0, len(nums)):
-        x = nums[i]
-        if x in dicts:
-            return [dicts.get(x), i]
-        dicts[target - x] = i
+  # def twoSum(self, nums, target):
+  #   dicts = {}
+  #   for i in range(0, len(nums)):
+  #       x = nums[i]
+  #       if x in dicts:
+  #           return [dicts.get(x), i]
+  #       dicts[target - x] = i
 
+  def twoSum(self, nums, target):
+    dicts = dict(zip(nums, range(len(nums))))
+    # for i, v in dicts.iteritems():
+    for v, i in dicts.items():
+      gap = target - v
+      if gap in nums[:i] or gap in nums[i+1:]:
+        return [i, dicts[gap]]
+  
 
 if __name__ == '__main__':
   S = Solution()
   print(S.twoSum([2, 7, 11, 5], 9))
-  print(S.twoSum([3, 3], 6))
+  # print(S.twoSum([3, 3], 6))
   print(S.twoSum([2, 7, 11, 5, 4, 6, 3, 6], 9))

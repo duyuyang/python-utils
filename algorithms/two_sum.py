@@ -6,20 +6,31 @@ from itertools import permutations
 # return [0, 1].
 
 class Solution(object):
+  # def twoSum(self, nums, target):
+  #   def my_target(n):
+  #     return n[0] + n[1] == target
+  #   perm = set([tuple(sorted(e)) for e in permutations(nums, 2)])
+  #   cl = []
+  #   for i in filter(my_target, perm):
+  #     cl.extend(list(i))
+  #   result = []
+  #   for i, v in enumerate(nums):
+  #     for n in cl:
+  #       if v == n:
+  #         result.append(i)
+  #         break
+  #   return result
+
   def twoSum(self, nums, target):
-    def my_target(n):
-      return n[0] + n[1] == target
-    perm = set([tuple(sorted(e)) for e in permutations(nums, 2)])
-    cl = []
-    for i in filter(my_target, perm):
-      cl.extend(list(i))
-    result = []
-    for i, v in enumerate(nums):
-      for n in cl:
-        if v == n:
-          result.append(i)
-          break
-    return result
+    # if target - num = a num:
+    #    append to []
+    col = []
+    for i, n in enumerate(nums):
+      gap = target - n
+
+      if gap in nums[:i] or gap in nums[i+1:]:
+        col.append(i)
+    return col
 
 if __name__ == '__main__':
   S = Solution()

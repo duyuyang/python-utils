@@ -18,17 +18,22 @@
 from collections import deque
 
 class Solution(object):
+    # def isPalindrome(self, x):
+    #   stack = deque()
+    #   stack.extend(list(str(x)))
+    #   if x < 0:
+    #     return False
+    #   for i in range(len(stack)//2):
+    #     if stack.pop() != stack.popleft():
+    #       return False
+    #   return True
+
     def isPalindrome(self, x):
-      stack = deque()
-      stack.extend(list(str(x)))
-      if x < 0:
-        return False
-      for i in range(len(stack)//2):
-        if stack.pop() != stack.popleft():
-          return False
-      return True
-
-
+        x = str(x)
+        if x[::-1] == x: # 1234 -> 4321
+            return True
+        else:
+            return False
 
 
 if __name__ == '__main__':

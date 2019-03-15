@@ -11,12 +11,9 @@ class Solution(object):
       if x < 0:
         flag = -1
         x = abs(x)
-      # push the last digi to stack
-      while x > 0:
-        stack.append(x % 10)
+      for i in reversed(range(len(str(x)))):
+        init += x % 10 * (10 ** i)
         x = x // 10
-      for i in range(len(stack)):
-        init += stack.pop() * (10 ** i)
       return init * flag
 
 

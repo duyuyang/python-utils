@@ -1,20 +1,28 @@
 
 
 def main(arr):
-  common = set()
-  first = arr[0]
-  for c in first:
-    # if c in all the words, continue
-    # if c not in 1 word, break
-    for w in arr:
-      if c not in w:
-        return common
-      else:
-        common.add(c)
-  return common
+    common = []
+    try:
+      first = arr[0]
+      for i, c in enumerate(first):
+          for w in arr:
+              if first[i] != w[i]:
+                  return "".join(common)
+          common.append(c)
+    except IndexError:
+        return "".join(common)
 
-output = main(["flower","flow","flight"])
-print(output)
+    return "".join(common)
 
-output = main(["dog","racecar","car"])
-print(output)
+
+output = main(["flower", "flow", "flight"])
+print("\"%s\"" % output)
+
+output = main(["dog", "racecar", "car"])
+print("\"%s\"" % output)
+
+output = main(["aa", "ab"])
+print("\"%s\"" % output)
+
+output = main(["aa", "a"])
+print("\"%s\"" % output)
